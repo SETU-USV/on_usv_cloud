@@ -1,0 +1,31 @@
+{
+    "name": "On_USV_Cloud",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microIoT": "github:dfrobot/pxt-microiot#8f6da113635521ae49d8b622fad798e2dc0b917f",
+        "microphone": "*"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "main.py"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "branch": "v2.0.6",
+        "tag": "v2.0.6",
+        "commits": "https://github.com/microsoft/pxt-microbit/commits/78a06a90847a7a9564487f021a81b2a5b9885f2d",
+        "target": "5.0.12",
+        "pxt": "5.15.12",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}

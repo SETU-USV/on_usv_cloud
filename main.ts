@@ -40,7 +40,7 @@ let REVR = 0
 let TROT = 0
 let setArm = 0
 let RC1Info: string[] = []
-microIoT.microIoT_WIFI("HZN248789167", "stradbally")
+microIoT.microIoT_WIFI("Home Wi-Fi", "rggc7wts")
 microIoT.microIoT_MQTT(
 "9h1rq3Hf5cxTeQcb2yTYK3N6",
 "m33rs3IoJWxT9eX01hoxTLIDfLtq3EWN",

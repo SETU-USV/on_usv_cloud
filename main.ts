@@ -52,6 +52,6 @@ radio.setGroup(1)
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
     if (setArm == 1) {
-        radio.sendValue("trot", Math.round(parseFloat(TROT.split(":")[1].split(",")[0])))
+    	
     }
 })

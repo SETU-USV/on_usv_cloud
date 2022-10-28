@@ -6,25 +6,18 @@ microIoT.microIoT_MQTT_Event(microIoT.TOPIC.topic_1, function (RCMessage) {
         REVR = parseFloat(RC1Info[2].split("=")[1])
         STEER = parseFloat(RC1Info[3].split("=")[1])
     }
-    if (setArm == 1) {
-        if (REVR == 0) {
-            if (STEER > 90) {
-                Add_Right = STEER - 90
-                Add_Left = 0 - (STEER - 90)
-            } else if (STEER < 90) {
-                Add_Left = 90 - STEER
-                Add_Right = 0 - (90 - STEER)
-            }
-            radio.sendValue("right", Math.constrain(TROT + Add_Right, 60, 120))
-            serial.writeLine("Right" + Math.constrain(TROT + Add_Right, 60, 120))
-            radio.sendValue("left", Math.constrain(TROT + Add_Left, 60, 120))
-            serial.writeLine("Left" + Math.constrain(TROT + Add_Left, 60, 120))
-        } else if (REVR == 1) {
-            radio.sendValue("right", 180 - (TROT + Add_Right))
-            serial.writeLine("Right" + (180 - (TROT + Add_Right)))
-            radio.sendValue("left", 180 - (TROT + Add_Left))
-            serial.writeLine("Left" + (180 - (TROT + Add_Left)))
-        }
+    if (TROT == 0) {
+        TROT = 90
+    }
+    if (STEER > 93) {
+        Add_Right = 0 - (STEER - 90)
+        Add_Left = STEER - 90
+    } else if (STEER < 87) {
+        Add_Left = 0 - (90 - STEER)
+        Add_Right = 90 - STEER
+    } else if (STEER >= 87 && STEER <= 93) {
+        Add_Left = 0
+        Add_Right = 0
     }
 })
 microIoT.microIoT_MQTT_Event(microIoT.TOPIC.topic_0, function (message) {
@@ -60,7 +53,7 @@ let REVR = 0
 let TROT = 0
 let setArm = 0
 let RC1Info: string[] = []
-microIoT.microIoT_WIFI("Home Wi-Fi", "rggc7wts")
+microIoT.microIoT_WIFI("HZN248789167", "stradbally")
 microIoT.microIoT_MQTT(
 "u335T3QEEsEjumREZqdmRrKD",
 "YDNdRDprfQrpYYGid7v0ontAsL3j9GXF",
@@ -69,7 +62,26 @@ microIoT.SERVERS.Global
 )
 microIoT.microIoT_add_topic(microIoT.TOPIC.topic_1, "test/RCcontrol")
 radio.setGroup(1)
+let toggle = 0
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
-	
+    if (setArm == 1) {
+        if (REVR == 0) {
+            if (toggle == 0) {
+                radio.sendValue("left", Math.constrain(TROT + Add_Left, 70, 110) + 1)
+                toggle = 1
+            } else {
+                radio.sendValue("right", Math.constrain(TROT + Add_Right, 70, 110))
+                toggle = 0
+            }
+        } else if (REVR == 1) {
+            if (toggle == 0) {
+                radio.sendValue("left", Math.constrain(180 - (TROT + Add_Left), 70, 110))
+                toggle = 1
+            } else {
+                radio.sendValue("right", Math.constrain(180 - (TROT + Add_Right), 70, 110) - 1)
+                toggle = 0
+            }
+        }
+    }
 })

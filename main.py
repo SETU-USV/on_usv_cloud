@@ -14,10 +14,10 @@ def on_button_pressed_a():
     microIoT.microIoT_SendMessage("{\"data\":29.2,\"ispublic\":true}", microIoT.TOPIC.TOPIC_0)
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
-microIoT.microIoT_WIFI("Galaxyz", "44445555")
-microIoT.microIoT_MQTT("9h1rq3Hf5cxTeQcb2yTYK3N6",
-    "m33rs3IoJWxT9eX01hoxTLIDfLtq3EWN",
-    "test/control",
+microIoT.microIoT_WIFI("SSID", "PWD")
+microIoT.microIoT_MQTT("MQTT_SSID",
+    "MQTT_PWD",
+    "Channel/Topic",
     microIoT.SERVERS.GLOBAL)
 radio.set_group(1)
 basic.show_icon(IconNames.HEART)

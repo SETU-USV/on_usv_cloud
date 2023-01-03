@@ -53,14 +53,14 @@ let REVR = 0
 let TROT = 0
 let setArm = 0
 let RC1Info: string[] = []
-microIoT.microIoT_WIFI("HZN248789167", "stradbally")
+microIoT.microIoT_WIFI("SSID", "PWD")
 microIoT.microIoT_MQTT(
-"u335T3QEEsEjumREZqdmRrKD",
-"YDNdRDprfQrpYYGid7v0ontAsL3j9GXF",
-"test/control",
+"MQTT_ID",
+"MQTT_PWD",
+"Channel/topic",
 microIoT.SERVERS.Global
 )
-microIoT.microIoT_add_topic(microIoT.TOPIC.topic_1, "test/RCcontrol")
+microIoT.microIoT_add_topic(microIoT.TOPIC.topic_1, "Channel/topic")
 radio.setGroup(1)
 let toggle = 0
 basic.showIcon(IconNames.Heart)
